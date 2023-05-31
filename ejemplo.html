@@ -1,0 +1,287 @@
+<html lang="es">
+    <head>
+        <title>Agencia Estatal Boletín Oficial del Estado</title>
+        <meta charset="utf-8">
+<style>
+
+header {
+    background-color:#FFCB00;
+}
+
+header div {
+  width: 100%;
+  align-items: center;
+}
+
+
+h1 {
+  display: inline-block;
+  vertical-align: top;
+}
+
+img {
+  margin-left: 10px;
+}
+
+nav{
+    background-color: #123A63;
+}
+nav ul {
+  list-style-type: none; /*para que salgan las viñetas*/
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  position: relative; /*indica una posición relativa a la ubicación original es decir si usamos por ejemplo left: 50px el elemento se moverá 50px relativas a su posición original*/
+  display: inline-block; /* nos permite definir el ancho y el alto del elemento y modificar margen y padding */
+}
+
+nav ul li a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #123A63;
+}
+
+nav ul li:hover > a {
+  background-color: #ccc;
+}
+
+nav ul ul {
+  display: none; /*por defecto ocultamos el segundo nivel */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f1f1f1;
+  padding: 0;
+}
+
+nav ul li:hover > ul { /* Seleccionará todos los elementos ul que sean descendientes directos de li:hover para mostrarlo lo interesante es que es una solución recursiva */
+  display: inherit;
+}
+
+nav ul ul li {
+  width: 100%;
+}
+
+nav ul ul li a {
+  padding: 10px 40px;
+  background-color: #ddd;
+  color: #333;
+}
+
+nav ul ul li a:hover {
+  background-color: #ccc;
+}
+
+nav ul ul ul {
+  left: 100%; /*coloca el elemento 100% a la derecha del elemento padre que debe tener una posición definida position: relativea position: absolute o position: fixed*/
+  top: 0;
+}
+
+
+body{
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+main {
+    padding-left: 10px;  
+    padding-right: 10px;  
+}
+
+section {
+}
+
+h2 {  
+display: block;
+width: 100%;
+color: #fff;
+padding-left: 10px;
+background-color: #195c9e;
+}
+
+.article-container {
+
+}
+
+article {
+    min-width: 30%;
+    display:inline-block;
+    vertical-align: top;
+}
+
+</style>
+    </head>
+    <body>
+        <header>
+            <div>
+                <img src="https://www.boe.es/imagenes/logoMPR.png">
+                <h1>Agencia Estatal Boletín Oficial del Estado</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">Castellano</a>
+                        <ul>
+                            <li><a href="#">Castellano</a></li>
+                            <li><a href="#">Català</a></li>
+                            <li><a href="#">Galego</a></li>
+                            <li><a href="#">Euskara</a></li>
+                            <li><a href="#">Valencià</a></li>
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">Français</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Buscar</a></li>
+                    <li><a href="#">Mi BOE</a></li>
+                    <li><a href="#">Menú</a>
+                        <ul>
+                            <li><a href="#">Diarios Oficiales</a>
+                                <ul>
+                                    <li><a href="#">BOE</a></li>
+                                    <li><a href="#">BORME</a></li>
+                                    <li><a href="#">Otros diarios oficiales</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Información Jurídica</a>
+                                <ul>
+                                    <li><a href="#">Todo el Derecho</a></li>
+                                    <li><a href="#">Biblioteca Jurídica Digital</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Otros Servicios</a>
+                                <ul>
+                                    <li><a href="#">Notificaciones</a></li>
+                                    <li><a href="#">Edictos judiciales</a></li>
+                                    <li><a href="#">Portal de subastas</a></li>
+                                    <li><a href="#">Anunciantes</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <!--
+            <div id="anuncios">
+                Nueva colección de <a href="https://www.boe.es/biblioteca_juridica/index.php?tipo=O">Códigos Electrónicos de Oposiciones</a>, con <a href="https://www.boe.es/mi_boe/">alertas</a> de actualización gratuitas		
+            </div>
+            -->
+            <section>
+                <h2>Diarios oficiales</h2>
+            <div class="article-container">
+                <article>
+                    <h3>Boletín Oficial del Estado</h3>
+                    <ul>
+                        <li>Último BOE</li>
+                        <li>Busar en BOE</li>
+                        <li>Calendario</li>
+                    </ul>
+                </article>
+                <article>
+                    <h3>Boletín Oficial del Registro Mercantil</h3>
+                    <ul>
+                        <li>Último BORME</li>
+                        <li>Busar en BORME</li>
+                        <li>Calendario</li>
+                    </ul>
+                </article>
+                <article>
+                    <h3>Otros diarios oficiales</h3>
+                    <ul>
+                        <li>Unión Europea (DOUE)</li>
+                        <li>Boletines autonómicos</li>
+                        <li>Boletines provinciales</li>
+                    </ul>
+                </article>
+            </div>
+            </section>
+
+            <section>
+                <h2>Información Jurídica</h2>
+                <div class="article-container">
+                <article>
+                    <h3>Todo el derecho</h3>
+                    <ul>
+                        <li>Legislación</li>
+                        <li>Tribunal Constitucional</li>
+                        <li>Judisprudencia (CENDOJ)</li>
+                        <li>Doctrina de la fiscalia</li>
+                        <li>Derechos fundamentales</li>
+                        <li>Dictámenes del Consejo de Estado</li>
+                        <li>Abogacía del Estado</li>
+                        <li>Derecho de la Unión Europea</li>
+                        <li>Colección histórica: Gazeta (1661-1959)</li>
+                    </ul>
+                    <p>Más búsquedas</p>
+                </article>
+                <article>
+                    <h3>Biblioteca Jurídica Digital</h3>
+                    <p>Publicaciones jurídicas para descargar de forma libre y gratuita:</p>
+                    <ul>
+                        <li>Libros jur&iacute;dicos electr&oacute;nicos</li>
+                        <li>C&oacute;digos electr&oacute;nicos</li>
+                        <li>C&oacute;digos electr&oacute;nicos universitarios</li>
+                        <li>Material de oposiciones</li>
+                        <li>Anuarios y revistas</li>
+                        <li>La Editorial del BOE</li>
+                    </ul>
+                </article>
+                </div>
+            </section>
+
+            <section>
+                <h2>Otros servicios</h2>
+
+                <img src="/imagenes/home/teu_270.png" srcset="/imagenes/home/teu_270.svg" alt="">
+                <p>Notificaciones</p>
+                <img src="/imagenes/home/teju_270.png" srcset="/imagenes/home/teju_270.svg" alt="">
+                <p>Edictos judiciales</p>
+        
+                <img src="/imagenes/home/subastas_270.png" srcset="/imagenes/home/subastas_270.svg" alt="">
+                <p>Portal de Subastas</p>
+        
+        
+                <img src="/imagenes/home/anunciantes.png" srcset="/imagenes/home/anunciantes.svg" alt="">
+                <p>Anunciantes</p>
+            </section>
+        
+            <section>
+                <h2>Información corporativa</h2>
+        
+                <ul>
+                    <li>La Agencia</li>
+                    <li>Perfil del contratante</li>
+                    <li>Carta de servicios</li>
+                    <li>Empleo en el BOE</li>
+                </ul>
+            </section>
+        </main>
+        
+        <footer>
+            <ul>
+                <li>Contactar</li>
+                <li>Sobre esta sede electrónica</li>
+                <li>Mapa</li>
+                <li>Aviso legal</li>
+                <li>Accesibilidad</li>
+                <li>Protección de datos</li>
+                <li>Tutoriales</li>
+            </ul>
+    
+            <img src="/imagenes/home/rss_32.png" srcset="/imagenes/home/rss_32.svg" alt="RSS">
+            <img src="/imagenes/home/twitter_32.png" srcset="/imagenes/home/twitter_32.svg" alt="Twitter">
+            <img src="/imagenes/home/facebook_32.png" srcset="/imagenes/home/facebook_32.svg" alt="Facebook">
+            <img src="/imagenes/home/linkedin_32.png" srcset="/imagenes/home/linkedin_32.svg" alt="LinkedIn">
+            <img src="/imagenes/home/youtube_32.png" srcset="/imagenes/home/youtube_32.svg" alt="YouTube">
+            <p>
+            Agencia Estatal Boletín Oficial del Estado<br>
+            Avda. de Manoteras, 54 - 28050 Madrid
+            </p>
+        </footer>
+    </body>
+</html>
