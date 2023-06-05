@@ -1,0 +1,40 @@
+<!--
+El siguiente ejemplo cuenta el número de veces que un usuario ha hecho clic en un botón. En este código, la cadena de 
+valor se convierte en un número para poder aumentar el contador:
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function clickCounter() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount)+1;
+    } else {
+      localStorage.clickcount = 1;
+    }
+    document.getElementById("result").innerHTML = "Se incrementó el contador " + localStorage.clickcount + " time(s).";
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+}
+
+function deleteCounter() {
+  localStorage.removeItem('clickcount');
+}
+</script>
+</head>
+<body>
+
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<p>Click the button to see the counter increase.</p>
+<p><button onclick="deleteCounter()" type="button">Borrar</button></p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+<div id="result"></div>
+
+
+
+</body>
+</html>
+
+

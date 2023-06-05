@@ -1,0 +1,94 @@
+<!--
+Hacer que un elemento se pueda arrastrar
+En primer lugar: para hacer que un elemento se pueda arrastrar, establezca el draggableatributo en verdadero:
+
+<img draggable="true">
+Qué arrastrar: ondragstart y setData()
+Luego, especifique lo que debe suceder cuando se arrastra el elemento.
+
+En el ejemplo anterior, el ondragstartatributo llama a una función, arrastrar (evento), que especifica qué datos se arrastrarán.
+
+El dataTransfer.setData()método establece el tipo de datos y el valor de los datos arrastrados:
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+En este caso, el tipo de datos es "texto" y el valor es el id del elemento arrastrable ("drag1").
+
+Dónde caer - ondragover
+El ondragoverevento especifica dónde se pueden colocar los datos arrastrados.
+
+De forma predeterminada, los datos/elementos no se pueden colocar en otros elementos. Para permitir una caída, debemos evitar el manejo predeterminado del elemento.
+
+Esto se hace llamando al event.preventDefault()método para el evento ondragover:
+
+event.preventDefault()
+Hacer la gota - ondrop
+Cuando se sueltan los datos arrastrados, se produce un evento de soltar.
+
+En el ejemplo anterior, el atributo ondrop llama a una función, drop(event):
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+Código explicado:
+
+Llame a preventDefault() para evitar que el navegador maneje los datos de manera predeterminada (el valor predeterminado es abrir como enlace al soltar)
+Obtenga los datos arrastrados con el método dataTransfer.getData(). Este método devolverá cualquier dato que se haya establecido en el mismo tipo en el método setData()
+Los datos arrastrados son la identificación del elemento arrastrado ("drag1")
+Agregue el elemento arrastrado al elemento soltado
+-->
+
+<!DOCTYPE HTML>
+<html>
+  <meta charset="UTF-8">
+<head>
+<style>
+#div1 {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+</style>
+<script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("imagen", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("imagen");
+      ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+</head>
+<body>
+
+<p>Arrastra la imagen hacia el rectángulo:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="https://www.boe.es/imagenes/logoMPR.svg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+<p>
+  Para arrastrar y soltar se deben tener en cuenta tres eventos:</p>
+
+  <ul>
+    <li>ondragstart: Cuando se inicia el arrastre</li>
+    <li>ondragover: Cuando se están encima del contenedor</li>
+    <li>ondrop: Cuando se suelta</li>
+  </ul>
+  <p>Primero se llena un setData "image" con el contenido de drag1 luego evitamos el comportamiento por defecto (los elementos no se pueden sobreponer), y finalmente tranferimos el contenido al div1</p>
+</body>
+</html>
+
+
+
+

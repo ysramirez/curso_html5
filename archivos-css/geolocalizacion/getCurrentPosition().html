@@ -1,0 +1,86 @@
+<!--
+getCurrentPosition()
+Se utiliza para devolver la posición del usuario.
+
+Ejemplo explicado:
+
+Compruebe si la geolocalización es compatible
+Si es compatible, ejecute el método getCurrentPosition(). Si no, mostrar un mensaje al usuario.
+Si el método getCurrentPosition() tiene éxito, devuelve un objeto de coordenadas a la función especificada en el 
+parámetro (showPosition)
+La función showPosition() genera la latitud y la longitud
+El ejemplo anterior es un script de geolocalización muy básico, sin manejo de errores.
+
+Los métodos de geolocalización son los siguientes:
+- GPS (Sistema de Posicionamiento Global): Si el dispositivo tiene un receptor GPS incorporado, se intentará utilizar para obtener la ubicación precisa. Esto proporcionará la ubicación más precisa disponible.
+
+- Red celular: Si el dispositivo no tiene acceso al GPS, se puede utilizar la información de la red celular para obtener una ubicación aproximada. Esto se basa en la información proporcionada por las torres de telefonía móvil cercanas al dispositivo.
+
+ -Wi-Fi: Si no se puede acceder al GPS ni a la red celular, se puede utilizar la información de las redes Wi-Fi cercanas para estimar la ubicación del dispositivo. Esto se basa en la base de datos de puntos de acceso Wi-Fi y sus ubicaciones conocidas.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<p>Presione el botón para obtener sus coordenadas.</p>
+
+<button onclick="getLocation()">¿Dónde estoy?</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Este navegador no soporta geolocalización.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitud: " + position.coords.latitude +  "<br>Longitud: " + position.coords.longitude;
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,84 @@
+<!--
+Ahora, creemos nuestro trabajador web en un JavaScript externo.
+
+Aquí, creamos un script que cuenta. El script se almacena en el archivo "demo_workers.js":
+
+var i = 0;
+
+function timedCount() {
+  i = i + 1;
+  postMessage(i);
+  setTimeout("timedCount()",500);
+}
+
+timedCount();
+La parte importante del código anterior es el postMessage()método, que se utiliza para enviar un mensaje a la página HTML.
+
+Nota: Normalmente, los trabajadores web no se utilizan para scripts tan simples, sino para tareas más intensivas de CPU.
+
+Crear un objeto de trabajador web
+Ahora que tenemos el archivo web worker, debemos llamarlo desde una página HTML.
+
+Las siguientes líneas verifican si el trabajador ya existe, si no, crea un nuevo objeto de trabajador web y ejecuta el código en "demo_workers.js":
+
+if (typeof(w) == "undefined") {
+  w = new Worker("demo_workers.js");
+}
+Luego podemos enviar y recibir mensajes del trabajador web.
+
+Agregue un detector de eventos "onmessage" al trabajador web.
+
+w.onmessage = function(event){
+  document.getElementById("result").innerHTML = event.data;
+};
+Cuando el trabajador web publica un mensaje, se ejecuta el código dentro del detector de eventos. Los datos del trabajador web se almacenan en event.data.
+
+Terminar un trabajador web
+Cuando se crea un objeto de trabajo web, continuará escuchando mensajes (incluso después de que finalice el script externo) hasta que finalice.
+
+Para finalizar un trabajador web y recursos gratuitos de navegador/computadora, use el terminate()método:
+
+w.terminate();
+Reutilizar el trabajador web
+Si establece la variable del trabajador en indefinida, después de que se haya terminado, puede reutilizar el código:
+
+w = undefined;
+
+-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Count numbers: <output id="result"></output></p>
+<button onclick="startWorker()">Start Worker</button> 
+<button onclick="stopWorker()">Stop Worker</button>
+
+<p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
+
+<script>
+var w;
+
+function startWorker() {
+  if(typeof(Worker) !== "undefined") {
+    if(typeof(w) == "undefined") {
+      w = new Worker("demo_workers.js");
+    }
+    w.onmessage = function(event) {
+      document.getElementById("result").innerHTML = event.data;
+    };
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+  }
+}
+
+function stopWorker() { 
+  w.terminate();
+  w = undefined;
+}
+</script>
+
+</body>
+</html>
+
+
+
